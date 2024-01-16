@@ -1,0 +1,230 @@
+<style>
+  body {
+    background-color: white;
+    color: #007bfb;
+    padding: 1em 4em;
+    box-sizing: border-box;
+    height: 580px;
+    overflow: hidden;
+  }
+
+  h1 {
+    background-color: #007bfb;
+    border-radius: 20px;
+    width: fit-content;
+    color: white;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  * {
+    font-family: CoFo Sans;
+    color: white;
+  }
+
+  .W_Form {
+    box-sizing: border-box;
+    box-sizing: border-box;
+    height: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    border-radius: 25px;
+    padding: 20px;
+    background-color: #007bfb;
+  }
+
+  .C_Form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 30px;
+  }
+
+  .A_RadioPoint {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .W_FormRadio {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 25px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #007bfb;
+  }
+
+  .W_FormButton {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #007bfb;
+  }
+
+  .O_Form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .M_FormRow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .A_Label {
+    font-size: 24px;
+  }
+
+  .A_Input {
+    padding: 0 15px 0;
+    border: 1px;
+    border-radius: 25px;
+    height: 50px;
+    width: 100%;
+    display: block;
+    font-size: 24px;
+    color: #007bfb;
+  }
+
+  .A_Input::placeholder {
+    color: #99cafe;
+  }
+
+  .A_Button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    all: unset;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  .A_Button:hover {
+    cursor: pointer;
+    background-color: #004692;
+  }
+
+  .W_File {
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 352px;
+    box-sizing: border-box;
+    border: 7px white;
+    border-style: dashed;
+    position: relative;
+  }
+
+  .A_File {
+    height: 100%;
+    width: 100%;
+    filter: opacity(0);
+    cursor: pointer;
+  }
+
+  .A_IconSet {
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .A_Center {
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #007bfb;
+    background: white;
+  }
+
+  .A_Arrow {
+    transform: translateX(10px);
+  }
+</style>
+<div class="O_Form">
+  <div class="W_Form">
+    <h1>Загрузите csv файл</h1>
+    <div class="W_File">
+      <input class="A_File" id="csv" type="file">
+      <div class="A_IconSet">
+        <div class="A_Icon">
+          <svg width="77" height="85" viewBox="0 0 77 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="A_Arrow" fill-rule="evenodd" clip-rule="evenodd"
+              d="M23.4942 64.2184V16.0749L7.50864 32.0604L0.973999 25.5258L24.8476 1.65222C26.1691 0.330715 28.1565 -0.0646095 29.8831 0.650585C30.4669 0.892379 30.982 1.24501 31.4081 1.67811L55.2557 25.5258L48.7211 32.0604L32.7356 16.0749V64.2184H23.4942Z"
+              fill="white" />
+            <path
+              d="M72 59.6724L72 70.8391C72 75.943 67.8625 80.0805 62.7586 80.0805L14.2414 80.0805C9.1375 80.0805 5 75.943 5 70.8391L5 59.6724"
+              stroke="white" stroke-width="9.24138" stroke-miterlimit="10" />
+          </svg>
+        </div>
+        <p class="A_Label A_Center">Добавить файл</p>
+      </div>
+    </div>
+  </div>
+  <div class="W_Form">
+    <h1>или вбейте ручками</h1>
+    <div class="C_Form">
+      <div class="M_FormRow">
+        <label class="A_Label" for="username">Первая плашка</label>
+        <input class="A_Input" type="text" id="text" placeholder="Сабанеева 15..." />
+      </div>
+      <div class="M_FormRow">
+        <label class="A_Label" for="username">Вторая плашка (опционально)</label>
+        <input class="A_Input" type="text" id="secondText" placeholder="Получите решение за 10 минут" />
+      </div>
+      <div class="M_FormRow">
+        <label for="name" class="A_Label">Лигал</label>
+        <input class="A_Input" type="textarea" rows="4" id="description" placeholder="Проектая деклорация..." />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="W_FormButton">
+  <button class="A_Button" id="submit-post" type="button">Готово</button>
+</div>
+</div>
+<script>
+  document.getElementById("submit-post").onclick = () => {
+    const text = document.getElementById("text").value;
+    const secondText = document.getElementById("secondText").value;
+    const description = document.getElementById("description").value;
+    const fileInput = document.getElementById("csv").files[0];
+    if (fileInput) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const content = e.target.result
+        parent.postMessage({ pluginMessage: { type: 'process-csv', content: e.target.result } }, '*');
+      }
+      reader.readAsText(fileInput)
+    } else {
+      parent.postMessage({ pluginMessage: { text, secondText, description } }, "*")
+    }
+  };
+</script>
