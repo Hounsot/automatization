@@ -15,7 +15,19 @@ figma.ui.onmessage = async (msg) => {
     const legalFontSize = msg.fontSize;
     const aspectRatio = frameWidth/frameHeight;
     const logoCode = frameWidth/454*100;
-    const aspectRatioCofecent = frameWidth > frameHeight ? 2.8 : 3.2;
+    function findCofecent(aspectRatiox) {
+      if (frameWidth > frameHeight) {
+        if (aspectRatiox > 4.5) {
+          return 2
+        } else {
+          return 2.8
+        }
+      } else {
+        return 3.2
+      }
+    }
+    let aspectRatioCofecent = findCofecent(aspectRatio);
+    // let aspectRatioCofecent = frameWidth > frameHeight ? 2.8 : 3.2;
     // Find the frame named "ExampleFrame"
     const exampleFrame = figma.currentPage.findOne(node => node.type === "FRAME" && node.name === "ExampleFrame") as FrameNode;
   
@@ -40,9 +52,12 @@ figma.ui.onmessage = async (msg) => {
         inlineLegal.visible = true;
         console.log("C legal", withLegalInlineHeight)
         console.log("Without legal", withoutLegalInlineHeight)
-        if (withLegalInlineHeight !== withoutLegalInlineHeight) {
+        const heightDifference = Math.abs(withLegalInlineHeight - withoutLegalInlineHeight);
+        const allowedMargin = withLegalInlineHeight * 0.2; // 10 percent of withLegalInlineHeight
+        if (heightDifference > allowedMargin) {
           console.log("NE ВМЕСТИЛСЯ")
           inlineFooter.visible = false;
+          multipleLineFooter.itemSpacing = newLogoHeight;
           multipleLineFooter.visible = true;
         } else {
           console.log("ВМЕСТИЛСЯ")
@@ -84,7 +99,7 @@ const resizeElement = (element: SceneNode, width: number, height: number) => {
       const newLogoHeight = newLogoWidth/7.584;
       const newUrbanHeight = newLogoHeight/0.8529;
       const newUrbanWidth = newUrbanHeight * 0.633;
-      const paddingValue = newLogoHeight * 2;
+      const paddingValue = newLogoHeight * 1.5;
       const postFontSize = newLogoHeight * 1.995
       const inlineFooterLength = frameWidth - 2 * paddingValue - newLogoWidth;
       post.characters = postText;
@@ -100,7 +115,7 @@ const resizeElement = (element: SceneNode, width: number, height: number) => {
       urbans.forEach(urban => {
         resizeElement(urban, newUrbanWidth, newUrbanHeight);
     });    
-    (urbanLegal as any).resize(inlineFooterLength * 1, urbanLegal.height);
+    (urbanLegal as any).resize(inlineFooterLength * 0.5, urbanLegal.height);
     replaceFooterFrame(clonedFrame);    
       // (logo as any).resize(newLogoWidth, newLogoHeight);
       // const newUrbanHeight = newLogoHeight/0.8529;
